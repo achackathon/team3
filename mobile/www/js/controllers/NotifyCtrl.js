@@ -1,15 +1,30 @@
 ﻿app.controller('NotifyCtrl', function ($scope, $stateParams, $ionicActionSheet, $timeout, $ionicLoading, $ionicModal, $ionicPopup, ionicMaterialInk, notifyService, helperService, $cordovaGeolocation) {
     //Using this variable to control scope.
     var vm = this;
+
+    vm.myNotification = {Name:"",
+                         Latitude:-43.935169,
+                         Longitude:-19.93622,
+                         Description:"",
+                         User:{UserId:5,Name:"Maza",Email:"menriqueraraujo@gmail.com",Senha:null,ReceiveEmail:false},
+                         NotificationType: null
+                        }
     vm.notificationTypeList;
     vm.notificationTypeSelected;
     vm.notificationTypeOptions;
     vm.notificationValue = 0;
-    vm.getOptions = function(notificationTypeId) {
-      return notifyService.getOptions(notificationTypeId);
+    vm.getOptions = function() {
+       notifyService.getOptions(vm.notificationTypeSelected.id, function(err,data) {
+        if(err) helperService.showAlert('erro', data);
+          vm.notificationTypeOptions = data;
+      });
     };
+
     vm.getNotificationTypes = function() {
-      return notifyService.getNotificationTypes();
+      notifyService.getNotificationTypes(function(err,data) {
+      if(err) helperService.showAlert('erro', data);
+        vm.notificationTypeList = data;
+      });
     };
     vm.showNotificationOptions = function() {
       return (vm.notificationTypeOptions != 'undefined' &&
@@ -18,7 +33,10 @@
     vm.onChangeNotificationType = function(){
       helperService.loadingShow();
       if(vm.notificationTypeSelected != 'undefined')
-      vm.notificationTypeOptions = notifyService.getOptions(vm.notificationTypeSelected.id);
+      vm.notificationTypeOptions = notifyService.getOptions(vm.notificationTypeSelected.id, function(err,data) {
+        if(err) helperService.showAlert('erro', data);
+          vm.notificationTypeOptions = data;
+      });
       helperService.loadingHide();
     };
     vm.saveNotification = function(notifiation) {

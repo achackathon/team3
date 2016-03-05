@@ -20,11 +20,6 @@
    });
  };
 
-
-
-
-
-
 //Methods that manage the motion list
     var reset = function() {
         var inClass = document.querySelectorAll('.in');
