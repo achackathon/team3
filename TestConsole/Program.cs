@@ -14,11 +14,17 @@ namespace TestConsole
         {
             
             Notification notif = new Notification();
-
             
+            notif.Name = "First One!";
+            notif.Latitude = -19.936220;
+            notif.Longitude = -43.935169;
+            notif.Description = "Test notifiation";
+            notif.DateAdded = DateTime.Now;
+            notif.UserID = 2;
+            notif.ExpiresOn = DateTime.Now.AddDays(1);
+            notif.NotificationTypeId = 1;
 
-
-            NotificationDB db = new NotificationDB();
+        NotificationDB db = new NotificationDB();
             db.Add(notif);
         }
     }
