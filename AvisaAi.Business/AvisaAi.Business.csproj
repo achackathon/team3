@@ -44,12 +44,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AvisaAi.Data\AvisaAi.Data.csproj">
       <Project>{87f64ef1-8430-48c7-b815-fbd3628987a2}</Project>
       <Name>AvisaAi.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AvisaAi.DB\AvisaAi.DB.csproj">
+      <Project>{8bba9039-2b5f-490e-b897-0611f8e2a465}</Project>
+      <Name>AvisaAi.DB</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

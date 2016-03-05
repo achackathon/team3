@@ -1,9 +1,7 @@
 ﻿using AvisaAi.Data.Entities;
+using AvisaAi.DB;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AvisaAi.Business
 {
@@ -13,7 +11,24 @@ namespace AvisaAi.Business
 
         public IEnumerable<NotificationType> Get()
         {
-            return null;
+            try
+            {
+                return new NotificationTypeDB().GetAll();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public object GetByUserId(int id)
+        {
+            return new NotificationTypeDB().GetByUserId(id);
+        }
+
+        public object GetById(int id)
+        {
+            return new NotificationTypeDB().GetById(id);
         }
 
         #endregion

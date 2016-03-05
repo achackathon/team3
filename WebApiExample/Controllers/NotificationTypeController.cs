@@ -26,6 +26,48 @@ namespace AvisaAi.WebApi.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("notificationType/{id}")]
+        public HttpResponseMessage GetById(int id)
+        {
+            try
+            {
+                var notification = new NotificationTypeBusiness().GetById(id);
+
+                if (notification == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, notification);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("notificationType/user/{id}")]
+        public HttpResponseMessage GetByUser(int id)
+        {
+            try
+            {
+                var notification = new NotificationTypeBusiness().GetByUserId(id);
+
+                if (notification == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound);
+                }
+
+                return Request.CreateResponse(HttpStatusCode.OK, notification);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         #endregion
     }
 }
