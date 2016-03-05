@@ -1,4 +1,5 @@
-﻿using AvisaAi.Data.Entities;
+﻿using AvisaAi.Business;
+using AvisaAi.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace AvisaAi.WebApi.Controllers
 {
     public class NotificationOptionsController : ApiController
     {
-        // GET api/<controller>
+        // GET: api/NotificationOptions
         public List<NotificationOption> Get(int notificationTypeId)
         {
             var notifications = (new DB.NotificationOptionDB().GetNotificationOptionsByNotificationType(notificationTypeId));
