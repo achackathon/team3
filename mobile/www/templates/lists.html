@@ -1,34 +1,16 @@
 ﻿
 <ion-view view-title="Avisaí">
     <ion-content>
-      <ion-refresher pulling-text="Atualizando..." on-refresh="doRefresh()">
+      <ion-refresher pulling-text="Atualizando..." on-refresh="lstCtrl.doRefresh()">
       </ion-refresher>
         <div class="bar bar-subheader bar-stable static text-center">
             <strong class="title">Quadro de Avisos</strong>
         </div>
         <ion-list class="animate-ripple">
-            <ion-item nav-clear menu-close class="item-icon-right item-avatar" ng-click="blinds();">
-                <img src="img/material4.jpg">
-                <h2>Notification.type</h2>
-                <p>notification.description</p>
-                <i class="icon ion-chatbubble muted"></i>
-            </ion-item>
-            <ion-item nav-clear menu-close class="item-icon-right item-avatar" ng-click="ripple();">
-                <img src="img/img_perigo.jpg">
-                <h2>Perigo</h2>
-                <p>ionicMaterialMotion.ripple();</p>
-                <i class="icon ion-chatbubble muted"></i>
-            </ion-item>
-            <ion-item nav-clear menu-close class="item-icon-right item-avatar" ng-click="fadeSlideIn();">
-                <img src="img/img_perigo.jpg">
-                <h2>Perigo</h2>
-                <p>ionicMaterialMotion.fadeSlideIn();</p>
-                <i class="icon ion-chatbubble muted"></i>
-            </ion-item>
-            <ion-item nav-clear menu-close class="item-icon-right item-avatar" ng-click="fadeSlideInRight();">
-                <img src="img/img_doacao.jpg">
-                <h2>Doação</h2>
-                <p>ionicMaterialMotion.fadeSlideInRight();</p>
+            <ion-item nav-clear menu-close class="item-icon-right item-avatar" ng-repeat="n in lstCtrl.notifiationList">
+                <img src="img/material4.jpg" ng-src="img/{{n.name}}">
+                <h2>{{n.Description}}</h2>
+                <p>{{n.Name}}</p>
                 <i class="icon ion-chatbubble muted"></i>
             </ion-item>
         </ion-list>

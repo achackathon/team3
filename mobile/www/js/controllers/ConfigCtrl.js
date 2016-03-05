@@ -28,7 +28,7 @@
             }
         }
     };
-
+     //Methods that manage the motion list
     var reset = function() {
         var inClass = document.querySelectorAll('.in');
         for (var i = 0; i < inClass.length; i++) {
