@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvisaAi", "WebApiExample\AvisaAi.csproj", "{D2570676-1478-44E2-88F1-C0A35434EB45}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvisaAi.WebApi", "WebApiExample\AvisaAi.WebApi.csproj", "{D2570676-1478-44E2-88F1-C0A35434EB45}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Presentation", "0 - Presentation", "{A953D5FE-3B9D-4472-AFA1-29C73CF9FBB5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - WebApi", "0 - WebApi", "{A953D5FE-3B9D-4472-AFA1-29C73CF9FBB5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Business", "1 - Business", "{1BCCAF77-C1B8-4437-A104-6341EEAFE0AA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Infrastructure", "2 - Infrastructure", "{9EF969E3-EB17-45DD-AD65-806830583161}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Infra", "2 - Infra", "{9EF969E3-EB17-45DD-AD65-806830583161}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvisaAi.Business", "AvisaAi.Business\AvisaAi.Business.csproj", "{E0F68221-C752-4608-80C9-7130B49B75E7}"
 EndProject

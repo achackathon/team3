@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AvisaAi.Data.Entities
+﻿namespace AvisaAi.Data.Entities
 {
-    class NotificationUser
+    public class NotificationUser
     {
+        public int NotificationUserId { get; set; }
+        public User User { get; set; }
+        public Notification Notification { get; set; }
     }
 }

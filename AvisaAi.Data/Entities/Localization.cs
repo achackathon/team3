@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AvisaAi.Data.Entities
+﻿namespace AvisaAi.Data.Entities
 {
-    class Localizacao
+    public class Localization
     {
+        public int LocalId { get; set; }
+        public string Name { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
     }
 }
