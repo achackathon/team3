@@ -12,9 +12,14 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            
+
+            TestGet();
+        }
+
+        static void TestAdd()
+        {
             Notification notif = new Notification();
-            
+
             notif.Name = "First One!";
             notif.Latitude = -19.936220;
             notif.Longitude = -43.935169;
@@ -24,8 +29,14 @@ namespace TestConsole
             notif.ExpiresOn = DateTime.Now.AddDays(1);
             notif.NotificationTypeId = 1;
 
-        NotificationDB db = new NotificationDB();
+            NotificationDB db = new NotificationDB();
             db.Add(notif);
+        }
+
+        static void TestGet()
+        {
+            NotificationDB db = new NotificationDB();
+            var list = db.Get();
         }
     }
 }

@@ -2,18 +2,21 @@
 using AvisaAi.Data.Entities;
 using System.Data;
 using System.Globalization;
+using System.Collections.Generic;
+using System;
 
 namespace AvisaAi.DB
 {
     public class NotificationDB
     {
+        const string CONN_STR = "Server =tcp:avisai.database.windows.net,1433;Database=avisai_db;User ID=team12@avisai;Password=P@ssw0rd;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         public bool Add(Notification notification)
         {
             const string SQL = @"INSERT INTO notification 
                     (Name, Location, Description, DateAdded, UserID, ExpiresOn, NotificationTypeId)
                     VALUES (@Name, geography::Point(@Lat,@Lng, 4326), @Description, @DateAdded, @UserID, @ExpiresOn, @NotificationTypeId)";
 
-            SqlConnection conn = new SqlConnection("Server =tcp:avisai.database.windows.net,1433;Database=avisai_db;User ID=team12@avisai;Password=P@ssw0rd;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SqlConnection conn = new SqlConnection(CONN_STR);
             try
             {
                 conn.Open();
@@ -36,6 +39,48 @@ namespace AvisaAi.DB
 
                     return true;
 
+                }
+            }
+            finally
+            {
+                if (conn.State == System.Data.ConnectionState.Open) conn.Close();
+            }
+        }
+
+        public List<Notification> Get()
+        {
+            const string SQL = @"SELECT Location.Lat as Lat, Location.Long as Long, * FROM notification";
+            var ret = new List<Notification>();
+
+            SqlConnection conn = new SqlConnection(CONN_STR);
+            try
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = SQL;
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            ret.Add(new Notification
+                            {
+                                Id = (int)dr["Id"],
+                                Name = dr["Name"].ToString(),
+                                Latitude = (double)dr["Lat"],
+                                Longitude = (double)dr["Long"],
+                                Description = dr["Description"].ToString(),
+                                DateAdded = DateTime.Parse(dr["DateAdded"].ToString()),
+                                UserID = (int)dr["UserID"],
+                                ExpiresOn = DateTime.Parse(dr["ExpiresOn"].ToString()),
+                                NotificationTypeId = (int)dr["NotificationTypeId"]
+                            });
+                        }
+                    }
+           
+                    return ret;
                 }
             }
             finally
