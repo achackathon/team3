@@ -6,9 +6,13 @@
             <div class="input-label">
                 Tipo Notificação
             </div>
-            <select ng-model="ntfCtrl.notificationTypeSelected" ng-options="notify.name for notify in ntfCtrl.notificationTypeList" ng-change="ntfCtrl.onChangeNotificationType()">
+            <select ng-model="ntfCtrl.notificationTypeSelected" ng-options="notify.Name for notify in ntfCtrl.notificationTypeList" ng-change="ntfCtrl.onChangeNotificationType()">
                 <option value="" selected>Selecione</option>
             </select>
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Nome</span>
+            <input type="text" placeholder="Nome" ng-model="">
         </label>
           <label class="item item-input item-floating-label">
               <span class="input-label">Descrição</span>
@@ -20,7 +24,7 @@
               <label class="checkbox">
                   <input type="checkbox">
               </label>
-              {{option.name}}
+              {{option.Description}}
           </div>
           <!--div class="item item-checkbox">
               <label class="checkbox">
