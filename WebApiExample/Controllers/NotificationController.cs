@@ -3,7 +3,6 @@ using AvisaAi.WebApi.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using System;
 
 namespace AvisaAi.WebApi.Controllers
 {
