@@ -89,7 +89,7 @@ namespace AvisaAi.DB
             }
         }
 
-        public override List<Notification> GetNearby(double Latitude, double Longitude)
+        public override List<Notification> Get(double Latitude, double Longitude)
         {
             const string SQL = @"select Location.Lat as Lat, Location.Long as Long, * from notification n
                         where n.Location.STDistance(geography::Point(@Lng,@Lat, 4326)) IS NOT NULL

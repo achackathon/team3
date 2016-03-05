@@ -16,6 +16,12 @@ namespace AvisaAi.WebApi.Controllers
             return SeedNotification(notifications);
         }
 
+        public List<NotificationModel> GetByNotificationType(int NotificationTypeId)
+        {
+            var notifications = (new Business.NotificationBusiness(new DB.NotificationDB())).GetByNotificationType(NotificationTypeId);
+            return SeedNotification(notifications);
+        }
+
         private List<NotificationModel> SeedNotification(List<Notification> notifications)
         {
             var userRepo = new Business.UserBusiness(new DB.UserDB());
@@ -46,7 +52,15 @@ namespace AvisaAi.WebApi.Controllers
         {
             var notifications = new Business.NotificationBusiness(new DB.NotificationDB());
             //return notif.GetNearby(Latitude, Longitude);
-            return SeedNotification(notifications.GetNearby(Latitude, Longitude));
+            return SeedNotification(notifications.Get(Latitude, Longitude));
+        }
+
+        // GET: api/Notification
+        public List<NotificationModel> GetNearbyByNotificationType(double Latitude, double Longitude, int NotificationTypeId)
+        {
+            var notifications = new Business.NotificationBusiness(new DB.NotificationDB());
+            //return notif.GetNearby(Latitude, Longitude);
+            return SeedNotification(notifications.Get(Latitude, Longitude, NotificationTypeId));
         }
 
         // GET: api/Notification/5

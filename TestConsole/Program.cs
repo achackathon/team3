@@ -41,7 +41,7 @@ namespace TestConsole
         static void TestGetNearBy(double Latitude, double Longitude)
         {
             NotificationDB db = new NotificationDB();
-            var list = db.GetNearby(Latitude, Longitude);
+            var list = db.Get(Latitude, Longitude);
         }
     }
 }

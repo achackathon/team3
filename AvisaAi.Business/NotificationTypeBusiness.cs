@@ -11,14 +11,7 @@ namespace AvisaAi.Business
 
         public IEnumerable<NotificationType> Get()
         {
-            try
-            {
-                return new NotificationTypeDB().GetAll();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return new NotificationTypeDB().GetAll();
         }
 
         public IEnumerable<NotificationType> GetByUserId(int id)
