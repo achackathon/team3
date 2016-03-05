@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NotificationBusiness.cs" />
     <Compile Include="NotificationTypeBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,6 +52,10 @@
     <ProjectReference Include="..\AvisaAi.DB\AvisaAi.DB.csproj">
       <Project>{8bba9039-2b5f-490e-b897-0611f8e2a465}</Project>
       <Name>AvisaAi.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AvisaAi.Interfaces\AvisaAi.Interfaces.csproj">
+      <Project>{41258b54-0895-497a-8696-83cedb165198}</Project>
+      <Name>AvisaAi.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
