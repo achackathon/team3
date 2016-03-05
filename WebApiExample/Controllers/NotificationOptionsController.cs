@@ -12,11 +12,11 @@ namespace AvisaAi.WebApi.Controllers
     {
         [HttpPost]
         [Route("notificationoptions/getbynotificationtype")]
-        public HttpResponseMessage Get(int notificationTypeID)
+        public HttpResponseMessage Get()
         {
             try
             {
-                var notifications = new NotificationOptionsBusiness().GetByNotificationType(notificationTypeID);
+                var notifications = new NotificationOptionsBusiness().GetByNotificationType(1);
                 return Request.CreateResponse(HttpStatusCode.OK, notifications);
             }
             catch (Exception ex)

@@ -12,8 +12,7 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-
-            TestGet();
+            TestGetNearBy(-19.936220, -43.935169);
         }
 
         static void TestAdd()
@@ -37,6 +36,12 @@ namespace TestConsole
         {
             NotificationDB db = new NotificationDB();
             var list = db.Get();
+        }
+
+        static void TestGetNearBy(double Latitude, double Longitude)
+        {
+            NotificationDB db = new NotificationDB();
+            var list = db.GetNearby(Latitude, Longitude);
         }
     }
 }
