@@ -9,14 +9,14 @@ namespace AvisaAi.DB
 {
     public class NotificationDB: INotificationRepository
     {
-        const string CONN_STR = "Server =tcp:avisai.database.windows.net,1433;Database=avisai_db;User ID=team12@avisai;Password=P@ssw0rd;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        //const string CONN_STR = "Server =tcp:avisai.database.windows.net,1433;Database=avisai_db;User ID=team12@avisai;Password=P@ssw0rd;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         public override bool Add(Notification notification)
         {
             const string SQL = @"INSERT INTO notification 
                     (Name, Location, Description, DateAdded, UserID, ExpiresOn, NotificationTypeId)
                     VALUES (@Name, geography::Point(@Lng, @Lat, 4326), @Description, @DateAdded, @UserID, @ExpiresOn, @NotificationTypeId)";
 
-            SqlConnection conn = new SqlConnection(CONN_STR);
+            SqlConnection conn = new SqlConnection(Constants.Connection.ConnectionString);
             try
             {
                 conn.Open();
@@ -52,7 +52,7 @@ namespace AvisaAi.DB
             const string SQL = @"SELECT Location.Lat as Lat, Location.Long as Long, * FROM notification";
             var ret = new List<Notification>();
 
-            SqlConnection conn = new SqlConnection(CONN_STR);
+            SqlConnection conn = new SqlConnection(Constants.Connection.ConnectionString);
             try
             {
                 conn.Open();
@@ -97,7 +97,7 @@ namespace AvisaAi.DB
                         order by n.Location.STDistance(geography::Point(@Lng,@Lat, 4326))";
             var ret = new List<Notification>();
 
-            SqlConnection conn = new SqlConnection(CONN_STR);
+            SqlConnection conn = new SqlConnection(Constants.Connection.ConnectionString);
             try
             {
                 conn.Open();

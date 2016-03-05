@@ -46,6 +46,7 @@
     <Compile Include="NotificationOptionDB.cs" />
     <Compile Include="NotificationTypeDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserDB.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AvisaAi.Data\AvisaAi.Data.csproj">

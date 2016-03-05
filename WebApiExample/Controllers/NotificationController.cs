@@ -1,24 +1,52 @@
 ﻿using AvisaAi.Data.Entities;
+using AvisaAi.WebApi.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System;
 
 namespace AvisaAi.WebApi.Controllers
 {
     public class NotificationController : ApiController
     {
         // GET: api/Notification
-        public List<Notification> Get()
+        public List<NotificationModel> Get()
         {
-            var notif = new Business.NotificationBusiness(new DB.NotificationDB());
-            return notif.Get();
+            var notifications = (new Business.NotificationBusiness(new DB.NotificationDB())).Get();
+            return SeedNotification(notifications);
+        }
+
+        private List<NotificationModel> SeedNotification(List<Notification> notifications)
+        {
+            var userRepo = new Business.UserBusiness(new DB.UserDB());
+            var notificationTypeRepo = new Business.NotificationTypeBusiness();
+
+            var result = new List<NotificationModel>();
+
+            foreach (Notification n in notifications)
+            {
+                result.Add(new NotificationModel
+                {
+                    Id = n.Id,
+                    Name = n.Name,
+                    Description = n.Description,
+                    Latitude = n.Latitude,
+                    Longitude = n.Longitude,
+                    DateAdded = n.DateAdded,
+                    ExpiresOn = n.ExpiresOn,
+                    User = userRepo.Get(n.Id),
+                    NotificationType = notificationTypeRepo.GetById(n.NotificationTypeId)
+                });
+            }
+            return result;
         }
 
         // GET: api/Notification
-        public List<Notification> GetNearby(double Latitude, double Longitude)
+        public List<NotificationModel> GetNearby(double Latitude, double Longitude)
         {
-            var notif = new Business.NotificationBusiness(new DB.NotificationDB());
-            return notif.GetNearby(Latitude, Longitude);
+            var notifications = new Business.NotificationBusiness(new DB.NotificationDB());
+            //return notif.GetNearby(Latitude, Longitude);
+            return SeedNotification(notifications.GetNearby(Latitude, Longitude));
         }
 
         // GET: api/Notification/5
