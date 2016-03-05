@@ -11,6 +11,6 @@ namespace AvisaAi.Interfaces
     {
         public abstract bool Add(Notification notification);
         public abstract List<Notification> Get();
-        public abstract List<Notification> GetNearby(double Latitude, double Longitude);
+        public abstract List<Notification> Get(double Latitude, double Longitude);
     }
 }

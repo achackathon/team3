@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Localization.cs" />
     <Compile Include="Entities\Notification.cs" />
     <Compile Include="Entities\NotificationOption.cs" />
     <Compile Include="Entities\NotificationType.cs" />
