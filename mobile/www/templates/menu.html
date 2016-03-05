@@ -11,8 +11,8 @@
                 <button class="button button-icon button-clear ion-android-more-vertical" id="menu-popover" ng-click="popover.show($event)"></button>
             </ion-nav-buttons>
         </ion-nav-bar>
-        <button id="fab" class="button button-positive button-fab button-fab-bottom-right" ng-sshow="mostrarNotificacao">
-            <i class="icon ion-social-twitter"></i>
+        <button id="fab" class="button button-positive button-fab button-fab-bottom-right" href="#/app/notify" ng-hide="true">
+            <i class="icon ion-plus-round"></i>
         </button>
         <ion-nav-view name="menuContent"></ion-nav-view>
     </ion-side-menu-content>
@@ -34,10 +34,10 @@
                 <ion-item nav-clear menu-close href="#/app/lists">
                     Quadro de Avisos
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/motion">
+                <ion-item nav-clear menu-close href="#/app/config">
                     Configurações
                 </ion-item>
-                <ion-item nav-clear menu-close href="#/app/ink">
+                <ion-item nav-clear menu-close href="#/app/about">
                     Sobre
                 </ion-item>
             </ion-list>

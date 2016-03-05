@@ -4,25 +4,25 @@
       <div class="list">
         <label class="item item-input item-select">
             <div class="input-label">
-                Tipo Notificação
+                 Notificação
             </div>
-            <select ng-model="ntfCtrl.notificationTypeSelected" ng-options="notify.Name for notify in ntfCtrl.notificationTypeList" ng-change="ntfCtrl.onChangeNotificationType()">
+            <select ng-model="ntfCtrl.notificationTypeSelected" ng-options="notify.Name for notify in ntfCtrl.notificationTypeList" ng-change="ntfCtrl.onChangeNotificationType(ntfCtrl.notificationTypeSelected)">
                 <option value="" selected>Selecione</option>
             </select>
         </label>
         <label class="item item-input item-floating-label">
             <span class="input-label">Nome</span>
-            <input type="text" placeholder="Nome" ng-model="">
+            <input type="text" placeholder="Nome" ng-model="ntfCtrl.myNotification.Name">
         </label>
           <label class="item item-input item-floating-label">
               <span class="input-label">Descrição</span>
-              <input type="text" placeholder="Descrição">
+              <input type="text" placeholder="Descrição" ng-model="ntfCtrl.myNotification.Description">
           </label>
           <br />
 
-          <div ng-show="ntfCtrl.showNotificationOptions()" class="item item-checkbox" ng-repeat="option in ntfCtrl.notificationTypeOptions">
+          <div  class="item item-checkbox" ng-repeat="option in ntfCtrl.notificationTypeOptions">
               <label class="checkbox">
-                  <input type="checkbox">
+                  <input type="checkbox" >
               </label>
               {{option.Description}}
           </div>

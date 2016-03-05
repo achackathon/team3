@@ -46,7 +46,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         url: '/config',
         views: {
             'menuContent': {
-                templateUrl: 'templates/motion.html',
+                templateUrl: 'templates/config.html',
                 controller: 'ConfigCtrl'
             }
         }

@@ -7,11 +7,12 @@
             <strong class="title">Quadro de Avisos</strong>
         </div>
         <ion-list class="animate-ripple">
-            <ion-item nav-clear menu-close class="item-icon-right item-avatar" ng-repeat="n in lstCtrl.notifiationList">
-                <img src="img/material4.jpg" ng-src="img/{{n.name}}">
+            <ion-item nav-clear menu-close class="item-icon-left item-avatar" ng-repeat="n in lstCtrl.notifiationList">
+                <!--img src="img/material4.jpg" ng-src="img/{{n.name}}"-->
+                <i class="icon muted" ng-class="n.NotificationType.Icon"></i>
                 <h2>{{n.NotificationType.Name}}</h2>
                 <p>{{n.Name}}</p>
-                <i class="icon ion-chatbubble muted"></i>
+
             </ion-item>
         </ion-list>
       </ion-content>

@@ -1,6 +1,6 @@
 app.factory('notifyService', function ($http, helperService) {
-    function storeNotify(obj) {
-      //Code..
+    function storeNotify(param, callback) {
+      helperService.postHttp('Notification/save', param, callback)
     };
 
     function retreveNotify() {
@@ -8,7 +8,7 @@ app.factory('notifyService', function ($http, helperService) {
     };
 
     function notificationTypeOptions(notificationTypeId, callback) {
-      helperService.getHttpRequest('notificationoptions/getbynotificationtype', notificationTypeId,  callback);
+      helperService.getHttpRequest('NotificationOptions/?notificationTypeId=' + notificationTypeId, null,  callback);
     }
 
     function notificationTypes(callback) {
@@ -23,8 +23,8 @@ app.factory('notifyService', function ($http, helperService) {
       get: function () {
         return retreveUser();
       },
-      save: function(val) {
-        storeNotify(val);
+      save: function(myNotification, callback) {
+        storeNotify(myNotification, callback);
       },
       getOptions: function(notificationType, callback){
         return notificationTypeOptions(notificationType, callback);

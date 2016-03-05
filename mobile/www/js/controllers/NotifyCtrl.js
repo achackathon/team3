@@ -2,13 +2,14 @@
     //Using this variable to control scope.
     var vm = this;
 
-    vm.myNotification = {Name:"",
-                         Latitude:-43.935169,
-                         Longitude:-19.93622,
-                         Description:"",
-                         User:{UserId:5,Name:"Maza",Email:"menriqueraraujo@gmail.com",Senha:null,ReceiveEmail:false},
-                         NotificationType: null
-                        }
+    vm.myNotification = { Name:"",
+                          Latitude:-43.935169,
+                          Longitude:-19.93622,
+                          Description:"",
+                          UserId: 5,
+                          NotificationTypeId: 6
+                       };
+
     vm.notificationTypeList;
     vm.notificationTypeSelected;
     vm.notificationTypeOptions;
@@ -21,29 +22,44 @@
     };
 
     vm.getNotificationTypes = function() {
+      helperService.loadingShow();
       notifyService.getNotificationTypes(function(err,data) {
       if(err) helperService.showAlert('erro', data);
         vm.notificationTypeList = data;
+        helperService.loadingHide();
       });
     };
+
     vm.showNotificationOptions = function() {
+      console.log(vm.notificationTypeOptions);
       return (vm.notificationTypeOptions != 'undefined' &&
          vm.notificationTypeOptions.length > 0)
     };
-    vm.onChangeNotificationType = function(){
+    vm.onChangeNotificationType = function(notify){
       helperService.loadingShow();
+      vm.notificationTypeSelected = notify;
       if(vm.notificationTypeSelected != 'undefined')
-      vm.notificationTypeOptions = notifyService.getOptions(vm.notificationTypeSelected.id, function(err,data) {
+      notifyService.getOptions(notify.Id, function(err,data) {
         if(err) helperService.showAlert('erro', data);
+        console.log(data);
           vm.notificationTypeOptions = data;
       });
       helperService.loadingHide();
     };
-    vm.saveNotification = function(notifiation) {
+    vm.saveNotification = function() {
       helperService.loadingShow();
-      notifyService.save();
+      //fill the object
+      //vm.myNotification.NotificationType = vm.notificationTypeSelected;
+      notifyService.save(vm.myNotification, function(err,data) {
+        helperService.loadingHide();
+        if(err) {
+          helperService.showAlert('Informação', 'Não foi possivel salvar a notificação! :(', null);
+        }
+        else {
+          helperService.showAlert('Informação', 'Notificação salva com Sucesso!', null);
+        }
+      });
       helperService.loadingHide();
-      helperService.showAlert('Informacao', 'Notificação salva com Sucesso!', null);
     };
 
     vm.notificationTypeList = vm.getNotificationTypes();
