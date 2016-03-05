@@ -1,4 +1,7 @@
-﻿using System.Net.Http;
+﻿using AvisaAi.Business;
+using System;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace AvisaAi.WebApi.Controllers
@@ -12,8 +15,15 @@ namespace AvisaAi.WebApi.Controllers
         [Route("notificationType")]
         public HttpResponseMessage Get()
         {
-            //teste
-            return null;
+            try
+            {
+                var notifications = new NotificationTypeBusiness().Get();
+                return Request.CreateResponse(HttpStatusCode.OK, notifications);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         #endregion

@@ -144,7 +144,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\AvisaAi.Business\AvisaAi.Business.csproj">
+      <Project>{e0f68221-c752-4608-80c9-7130b49b75e7}</Project>
+      <Name>AvisaAi.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AvisaAi.Data\AvisaAi.Data.csproj">
+      <Project>{87f64ef1-8430-48c7-b815-fbd3628987a2}</Project>
+      <Name>AvisaAi.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
