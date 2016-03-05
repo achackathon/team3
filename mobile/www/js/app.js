@@ -10,7 +10,8 @@ app.run(function ($ionicPlatform) {
         }
     });
 })
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
     $stateProvider
 
     .state('app', {
