@@ -1,0 +1,72 @@
+﻿
+<ion-view view-title="Minhas Notificações">
+    <ion-content class="im-wrapper">
+      <div class="list">
+        <label class="item item-input item-select">
+            <div class="input-label">
+                Tipo Notificação
+            </div>
+            <select ng-model="ntfCtrl.notificationTypeSelected" ng-options="notify.name for notify in ntfCtrl.notificationTypeList" ng-change="ntfCtrl.onChangeNotificationType()">
+                <option value="" selected>Selecione</option>
+            </select>
+        </label>
+          <label class="item item-input item-floating-label">
+              <span class="input-label">Descrição</span>
+              <input type="text" placeholder="Descrição">
+          </label>
+          <br />
+
+          <div ng-show="ntfCtrl.showNotificationOptions()" class="item item-checkbox" ng-repeat="option in ntfCtrl.notificationTypeOptions">
+              <label class="checkbox">
+                  <input type="checkbox">
+              </label>
+              {{option.name}}
+          </div>
+          <!--div class="item item-checkbox">
+              <label class="checkbox">
+                  <input type="checkbox">
+              </label>
+              Haha, you liar. There are no T&amp;Cs.
+          </div>
+          <br />
+          <label class="item item-radio">
+              <input type="radio" name="group">
+              <div class="item-content">
+                  Tap Me
+              </div>
+              <i class="radio-icon ion-checkmark"></i>
+          </label>
+          <label class="item item-radio">
+              <input type="radio" name="group">
+              <div class="item-content">
+                  Or Tap Me
+              </div>
+              <i class="radio-icon ion-checkmark"></i>
+          </label>
+          <label class="item item-radio">
+              <input type="radio" name="group">
+              <div class="item-content">
+                  Or Tap Me
+              </div>
+              <i class="radio-icon ion-checkmark"></i>
+          </label-->
+          <div class="item range range-positive">
+              <i class="icon ion-social-usd-outline"></i>
+              <input type="range" name="volume" min="0" max="100" value="33" ng-model="ntfCtrl.notificationValue">
+              <i class="icon ion-social-usd"></i>
+          </div>
+          <div class="input-label">
+              Valor: {{ntfCtrl.notificationValue | currency:"R$"}}
+          </div>
+          <button class="button button-block button-calm ink" data-ink-color="#9DEAFF" data-ink-opacity="1" ng-click="ntfCtrl.saveNotification()">
+              Notificar
+          </button>
+      </div>
+      <!--div class="code-wrapper code-wrapper-last">
+          <a class="toggle">View Code</a>
+          <div class="code">
+              &lt;div class="list"&gt; &lt;label class="item item-input item-floating-label"&gt; &lt;span class="input-label"&gt;First Name&lt;/span&gt; &lt;input type="text" placeholder="First Name"&gt; &lt;/label&gt; &lt;label class="item item-input item-floating-label"&gt; &lt;span class="input-label"&gt;Last Name&lt;/span&gt; &lt;input type="text" placeholder="Last Name"&gt; &lt;/label&gt; &lt;br /&gt; &lt;div class="item item-checkbox"&gt; &lt;label class="checkbox"&gt; &lt;input type="checkbox"&gt; &lt;/label&gt; I read the terms &amp; conditions &lt;/div&gt; &lt;div class="item item-checkbox"&gt; &lt;label class="checkbox"&gt; &lt;input type="checkbox"&gt; &lt;/label&gt; Haha, you liar. There are no T&amp;C's &lt;/div&gt; &lt;br /&gt; &lt;label class="item item-radio"&gt; &lt;input type="radio" name="group"&gt; &lt;div class="item-content"&gt; Tap Me &lt;/div&gt; &lt;i class="radio-icon ion-checkmark"&gt;&lt;/i&gt; &lt;/label&gt; &lt;label class="item item-radio"&gt; &lt;input type="radio" name="group"&gt; &lt;div class="item-content"&gt; Or Tap Me &lt;/div&gt; &lt;i class="radio-icon ion-checkmark"&gt;&lt;/i&gt; &lt;/label&gt; &lt;label class="item item-radio"&gt; &lt;input type="radio" name="group"&gt; &lt;div class="item-content"&gt; Or Tap Me &lt;/div&gt; &lt;i class="radio-icon ion-checkmark"&gt;&lt;/i&gt; &lt;/label&gt; &lt;div class="item range range-positive"&gt; &lt;i class="icon ion-ios-sunny-outline"&gt;&lt;/i&gt; &lt;input type="range" name="volume" min="0" max="100" value="33"&gt; &lt;i class="icon ion-ios-sunny"&gt;&lt;/i&gt; &lt;/div&gt; &lt;label class="item item-input item-select"&gt; &lt;div class="input-label"&gt; Most Influential Teletubby &lt;/div&gt; &lt;select&gt; &lt;option&gt;Laa-Laa&lt;/option&gt; &lt;option selected&gt;Tinky Winky&lt;/option&gt; &lt;option&gt;Dipsy&lt;/option&gt; &lt;option&gt;Po&lt;/option&gt; &lt;option&gt;Noo-noo&lt;/option&gt; &lt;/select&gt; &lt;/label&gt; &lt;button class="button button-block button-calm ink" data-ink-color="#9DEAFF" data-ink-opacity="1"&gt; Submit &lt;/button&gt; &lt;/div&gt;
+          </div>
+      </div-->
+    </ion-content>
+</ion-view>
