@@ -12,6 +12,7 @@ namespace AvisaAi.WebApi.Controllers
         [Route("notificationType")]
         public HttpResponseMessage Get()
         {
+            //teste
             return null;
         }
 
