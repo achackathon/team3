@@ -1,8 +1,8 @@
 app.factory('helperService', function ($ionicLoading, $ionicPopup, $timeout, $http) {
   var vm = this;
 
-  function getHttpRequest(url,callback) {
-    $http.get('http://avisaai.azurewebsites.net/api/' + url)
+  function getHttp(route,callback) {
+    $http.get('http://avisaai.azurewebsites.net/api/' + route)
          .then(function(resp) {
            callback(false,resp);
             console.log('Success', resp);
@@ -11,6 +11,16 @@ app.factory('helperService', function ($ionicLoading, $ionicPopup, $timeout, $ht
             console.error('ERR', err);
      });
   };
+
+  function postHttp(route, model, callback){
+      $http.post('http://avisaai.azurewebsites.net/api/' + route, model)
+           .then(function(resp) {
+            callback(false,resp);
+            console.log('Success', resp);
+          }, function(err) {
+            callback(true, err);
+            console.error('ERR', err);
+  }
 
   function showLoading() {
     $ionicLoading.show({
