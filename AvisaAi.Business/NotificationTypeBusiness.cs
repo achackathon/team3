@@ -21,12 +21,12 @@ namespace AvisaAi.Business
             }
         }
 
-        public object GetByUserId(int id)
+        public IEnumerable<NotificationType> GetByUserId(int id)
         {
             return new NotificationTypeDB().GetByUserId(id);
         }
 
-        public object GetById(int id)
+        public NotificationType GetById(int id)
         {
             return new NotificationTypeDB().GetById(id);
         }
