@@ -59,9 +59,9 @@
               <input type="range" name="volume" min="0" max="100" value="33" ng-model="ntfCtrl.notificationValue">
               <i class="icon ion-social-usd"></i>
           </div>
-          <div class="input-label">
-              Valor: {{ntfCtrl.notificationValue | currency:"R$"}}
-          </div>
+          <label class="item item-input item-floating-label">
+            Valor: {{ntfCtrl.notificationValue | currency:"R$"}}
+          </label>
           <button class="button button-block button-calm ink" data-ink-color="#9DEAFF" data-ink-opacity="1" ng-click="ntfCtrl.saveNotification()">
               Notificar
           </button>

@@ -1,15 +1,26 @@
 app.factory('helperService', function ($ionicLoading, $ionicPopup, $timeout, $http) {
   var vm = this;
 
-  function getHttpRequest(url,callback) {
-    $http.get('http://avisaai.azurewebsites.net/api/' + url)
+  function getHttp(route, param, callback) {
+    $http.get('http://avisaai.azurewebsites.net/api/' + route, param)
          .then(function(resp) {
-           callback(false,resp);
-            console.log('Succ ess', resp);
+           callback(false,resp.data);
+            console.log('Success', resp);
           }, function(err) {
             callback(true, err);
             console.error('ERR', err);
      });
+  };
+
+  function postHttp(route, model, callback) {
+      $http.post('http://avisaai.azurewebsites.net/api/' + route, model)
+           .then(function(resp) {
+            callback(false,resp);
+            console.log('Success', resp);
+          }, function(err) {
+            callback(true, err);
+            console.error('ERR', err);
+          });
   };
 
   function showLoading() {
@@ -76,8 +87,11 @@ app.factory('helperService', function ($ionicLoading, $ionicPopup, $timeout, $ht
     showAlert: function(title, description, callback) {
       return showAlertFunction(title, description, callback);
     },
-    getHttpRequest: function functionName(url,callback) {
-      return getHttpRequest(url,callback);
+    getHttpRequest: function(route, param, callback) {
+      return getHttp(route, param, callback);
+    },
+    postHttp: function (route, param, callback) {
+      return postHttp(route, param, callback);
     }
   }
 });

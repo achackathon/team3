@@ -1,6 +1,6 @@
 app.factory('notifyService', function ($http, helperService) {
     function storeNotify(param, callback) {
-      helperService.postHttp('Notification/save', param, callback)
+      helperService.postHttp('Notification', param, callback)
     };
 
     function retreveNotify() {

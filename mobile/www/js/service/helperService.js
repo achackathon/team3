@@ -13,6 +13,16 @@ app.factory('helperService', function ($ionicLoading, $ionicPopup, $timeout, $ht
   };
 
   function postHttp(route, model, callback) {
+    $http({
+        url: 'http://avisaai.azurewebsites.net/api/' + route,
+        method: "POST",
+        data: model,
+        withCredentials: true,
+        headers: {
+                    'Content-Type': 'application/json; charset=utf-8'
+        }
+    }).success(callback);
+    /*
       $http.post('http://avisaai.azurewebsites.net/api/' + route, model)
            .then(function(resp) {
             callback(false,resp);
@@ -20,7 +30,7 @@ app.factory('helperService', function ($ionicLoading, $ionicPopup, $timeout, $ht
           }, function(err) {
             callback(true, err);
             console.error('ERR', err);
-          });
+          });*/
   };
 
   function showLoading() {

@@ -1,5 +1,5 @@
 
-var app = angular.module('avisai', ['ionic', 'ionic-material']);
+var app = angular.module('avisai', ['ionic', 'ionic-material','ngCordova']);
 app.run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -46,7 +46,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
         url: '/config',
         views: {
             'menuContent': {
-                templateUrl: 'templates/motion.html',
+                templateUrl: 'templates/config.html',
                 controller: 'ConfigCtrl'
             }
         }
