@@ -1,4 +1,4 @@
-﻿app.controller('NotifyCtrl', function ($scope, $stateParams, $ionicActionSheet, $timeout, $ionicLoading, $ionicModal, $ionicPopup, ionicMaterialInk, notifyService, helperService) {
+﻿app.controller('NotifyCtrl', function ($scope, $stateParams, $ionicActionSheet, $timeout, $ionicLoading, $ionicModal, $ionicPopup, ionicMaterialInk, notifyService, helperService, $cordovaGeolocation) {
     //Using this variable to control scope.
     var vm = this;
     vm.notificationTypeList;

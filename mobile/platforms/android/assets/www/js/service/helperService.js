@@ -1,5 +1,17 @@
-app.factory('helperService', function ($ionicLoading, $ionicPopup, $timeout) {
+app.factory('helperService', function ($ionicLoading, $ionicPopup, $timeout, $http) {
   var vm = this;
+
+  function getHttpRequest(url,callback) {
+    $http.get('http://avisaai.azurewebsites.net/api/' + url)
+         .then(function(resp) {
+           callback(false,resp);
+            console.log('Succ ess', resp);
+          }, function(err) {
+            callback(true, err);
+            console.error('ERR', err);
+     });
+  };
+
   function showLoading() {
     $ionicLoading.show({
       content: 'Loading',
@@ -63,6 +75,9 @@ app.factory('helperService', function ($ionicLoading, $ionicPopup, $timeout) {
     },
     showAlert: function(title, description, callback) {
       return showAlertFunction(title, description, callback);
+    },
+    getHttpRequest: function functionName(url,callback) {
+      return getHttpRequest(url,callback);
     }
   }
 });
