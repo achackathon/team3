@@ -11,6 +11,8 @@
 
   vm.doRefresh = function() {
    vm.notifiationList = notifyService.getNotification(getMyGeoLocation());
+   console.log(vm.notifiationList);
+   reset();
    $scope.$broadcast('scroll.refreshComplete');
    $scope.$apply();
  };

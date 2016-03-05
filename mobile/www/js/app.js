@@ -25,7 +25,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         views: {
             'menuContent': {
                 templateUrl: 'templates/lists.html',
-                controller: 'ListsCtrl'
+                controller: 'ListsCtrl',
+                controllerAs: 'lstCtrl'
             }
         }
     })

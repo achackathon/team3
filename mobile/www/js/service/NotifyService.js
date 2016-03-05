@@ -27,8 +27,7 @@ app.factory('notifyService', function () {
     };
 
     function getMyNotifications(geo) {
-
-
+      return [{Id:2,Name:"First One!",Latitude:-43.935169,Longitude:-19.93622,Description:"Test notifiation",DateAdded:"2016-03-05T11:52:46",UserID:2,ExpiresOn:"2016-03-06T11:52:46",NotificationTypeId:1}];
     }
 
     return {
