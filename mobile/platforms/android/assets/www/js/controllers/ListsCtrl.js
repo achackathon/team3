@@ -1,4 +1,4 @@
-﻿app.controller('ListsCtrl', function ($scope, $stateParams, ionicMaterialMotion, notifyService) {
+﻿app.controller('ListsCtrl', function ($scope, $stateParams, ionicMaterialMotion, notifyService, helperService) {
   var vm = this;
 
   vm.notifiationList;
@@ -8,11 +8,16 @@
             lng: -89.381388
           }];
   };
-  
+
   vm.doRefresh = function() {
-   vm.notifiationList = notifyService.getNotification();
-   $scope.$broadcast('scroll.refreshComplete');
-   $scope.$apply();
+   notifyService.getNotification(getMyGeoLocation(), function(err,data) {
+     if(err) helperService.showAlert('erro', data);
+     vm.notifiationList = data;
+     console.log(vm.notifiationList);
+     reset();
+     $scope.$broadcast('scroll.refreshComplete');
+     //$scope.$apply();
+   });
  };
 
 

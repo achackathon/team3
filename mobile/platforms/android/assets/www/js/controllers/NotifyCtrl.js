@@ -25,7 +25,7 @@
       helperService.loadingShow();
       notifyService.save();
       helperService.loadingHide();
-      helperService.showAlert('Informacao', 'Notificação Salva com Sucesso!', null);
+      helperService.showAlert('Informacao', 'Notificação salva com Sucesso!', null);
     };
 
     vm.notificationTypeList = vm.getNotificationTypes();

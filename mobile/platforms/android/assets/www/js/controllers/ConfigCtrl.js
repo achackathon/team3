@@ -1,4 +1,4 @@
-﻿app.controller('MotionCtrl', function ($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion) {
+﻿app.controller('ConfigCtrl', function ($scope, $stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion) {
     var fab = document.getElementById('fab');
 
     $scope.moveFab = function(dir) {
@@ -28,7 +28,7 @@
             }
         }
     };
-
+     //Methods that manage the motion list
     var reset = function() {
         var inClass = document.querySelectorAll('.in');
         for (var i = 0; i < inClass.length; i++) {
