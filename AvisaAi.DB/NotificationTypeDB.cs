@@ -13,18 +13,21 @@ namespace AvisaAi.DB
                                     ,[Name]
                                     ,[Description]
                                     ,[Critical]
+                                    ,[Icon]
                                 FROM [avisai_db].[dbo].[notificationtype]";
 
         const string SQL_GET_BY_ID = @"SELECT [Id]
                                     ,[Name]
                                     ,[Description]
                                     ,[Critical]
+                                    ,[Icon]
                                 FROM [avisai_db].[dbo].[notificationtype] WHERE [Id] = @Id";
 
         const string SQL_GET_BY_USER_ID = @"SELECT nt.[Id]
                                           ,nt.[Name]
                                           ,nt.[Description]
                                           ,nt.[Critical]
+                                          ,nt.[Icon]
                                           ,us.[Id] as 'UserId'
                                           ,us.[name] as 'Username'
                                       FROM [avisai_db].[dbo].[notificationtype] nt
@@ -61,26 +64,7 @@ namespace AvisaAi.DB
                 if (conn.State == ConnectionState.Open) conn.Close();
             }
         }
-
-        private static void ReadNotificationTypes(List<NotificationType> not, SqlDataReader dr)
-        {
-            while (dr.Read())
-            {
-                not.Add(GetNotificationTypeObject(dr));
-            }
-        }
-
-        private static NotificationType GetNotificationTypeObject(SqlDataReader dr)
-        {
-            return new NotificationType
-            {
-                Id = (int)dr["Id"],
-                Name = dr["Name"].ToString(),
-                Description = dr["Description"].ToString(),
-                Critical = (bool)dr["Critical"],
-            };
-        }
-
+        
         public NotificationType GetById(int id)
         {
             var notif = new List<NotificationType>();
@@ -138,5 +122,29 @@ namespace AvisaAi.DB
                 if (conn.State == ConnectionState.Open) conn.Close();
             }
         }
+
+        #region [Métodos Privados]
+
+        private static void ReadNotificationTypes(List<NotificationType> not, SqlDataReader dr)
+        {
+            while (dr.Read())
+            {
+                not.Add(GetNotificationTypeObject(dr));
+            }
+        }
+
+        private static NotificationType GetNotificationTypeObject(SqlDataReader dr)
+        {
+            return new NotificationType
+            {
+                Id = (int)dr["Id"],
+                Name = dr["Name"].ToString(),
+                Description = dr["Description"].ToString(),
+                Critical = (bool)dr["Critical"],
+                Icon = dr["Icon"].ToString(),
+            };
+        }
+
+        #endregion
     }
 }

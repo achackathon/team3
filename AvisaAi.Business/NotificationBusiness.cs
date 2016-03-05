@@ -25,6 +25,5 @@ namespace AvisaAi.Business
         {
             return repo.GetNearby(Latitude, Longitude);
         }
-
     }
 }
