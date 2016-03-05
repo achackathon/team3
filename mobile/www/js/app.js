@@ -1,5 +1,5 @@
 
-var app = angular.module('avisai', ['ionic', 'ionic-material']);
+var app = angular.module('avisai', ['ionic', 'ionic-material','ngCordova']);
 app.run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -10,7 +10,8 @@ app.run(function ($ionicPlatform) {
         }
     });
 })
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
     $stateProvider
 
     .state('app', {
@@ -25,7 +26,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         views: {
             'menuContent': {
                 templateUrl: 'templates/lists.html',
-                controller: 'ListsCtrl'
+                controller: 'ListsCtrl',
+                controllerAs: 'lstCtrl'
             }
         }
     })

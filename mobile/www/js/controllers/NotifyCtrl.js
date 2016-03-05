@@ -1,4 +1,4 @@
-﻿app.controller('NotifyCtrl', function ($scope, $stateParams, $ionicActionSheet, $timeout, $ionicLoading, $ionicModal, $ionicPopup, ionicMaterialInk, notifyService, helperService) {
+﻿app.controller('NotifyCtrl', function ($scope, $stateParams, $ionicActionSheet, $timeout, $ionicLoading, $ionicModal, $ionicPopup, ionicMaterialInk, notifyService, helperService, $cordovaGeolocation) {
     //Using this variable to control scope.
     var vm = this;
     vm.notificationTypeList;
@@ -25,7 +25,7 @@
       helperService.loadingShow();
       notifyService.save();
       helperService.loadingHide();
-      helperService.showAlert('Informacao', 'Notificação Salva com Sucesso!', null);
+      helperService.showAlert('Informacao', 'Notificação salva com Sucesso!', null);
     };
 
     vm.notificationTypeList = vm.getNotificationTypes();

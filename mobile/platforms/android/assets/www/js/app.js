@@ -10,7 +10,8 @@ app.run(function ($ionicPlatform) {
         }
     });
 })
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
     $stateProvider
 
     .state('app', {
@@ -25,7 +26,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         views: {
             'menuContent': {
                 templateUrl: 'templates/lists.html',
-                controller: 'ListsCtrl'
+                controller: 'ListsCtrl',
+                controllerAs: 'lstCtrl'
             }
         }
     })
@@ -40,12 +42,12 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
     })
 
-    .state('app.motion', {
-        url: '/motion',
+    .state('app.config', {
+        url: '/config',
         views: {
             'menuContent': {
                 templateUrl: 'templates/motion.html',
-                controller: 'MotionCtrl'
+                controller: 'ConfigCtrl'
             }
         }
     })
@@ -55,7 +57,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         views: {
             'menuContent': {
                 templateUrl: 'templates/presetation.html',
-                controller: 'presetationCtrl'
+                controller: 'PresetationCtrl'
             }
         }
     })
