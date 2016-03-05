@@ -15,7 +15,7 @@ namespace AvisaAi.DB
         {
             const string SQL = @"INSERT INTO notification 
                     (Id, Name, Location, Description, DateAdded, UserID, ExpiresOn, NotificationTypeId)
-                    VALUES (@Id, @Name, @Location, @Description, @DateAdded, @UserID, @ExpiresOn, @NotificationTypeId)"
+                    VALUES (@Id, @Name, @Location, @Description, @DateAdded, @UserID, @ExpiresOn, @NotificationTypeId)";
 
             SqlConnection conn = new SqlConnection("Server =tcp:avisai.database.windows.net,1433;Database=avisai_db;User ID=team12@avisai;Password=P@ssw0rd;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             try
